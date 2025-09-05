@@ -1,11 +1,11 @@
 name: Build
 
-on:
-  workflow_dispatch:
-  push:
-    branches-ignore:
-      - 'dependabot/**'
-  pull_request:
+on: pull_request
+  # workflow_dispatch:
+  # push:
+  #   branches-ignore:
+  #     - 'dependabot/**'
+  # pull_request:
 
 env:
   DISABLE_KNAPSACK_PRO: false
@@ -44,6 +44,15 @@ jobs:
         ci_node_index: [0, 1, 2, 3]
     steps:
       - uses: actions/checkout@v3
+
+      - name: Install system packages (image & misc)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            imagemagick libmagickwand-dev libvips libvips-dev \
+            libmagic1 file shared-mime-info \
+            ffmpeg ghostscript
+
 
       - name: Setup redis
         uses: supercharge/redis-github-action@1.4.0
@@ -122,6 +131,14 @@ jobs:
         ci_node_index: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
     steps:
       - uses: actions/checkout@v3
+
+      - name: Install system packages (image & misc)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            imagemagick libmagickwand-dev libvips libvips-dev \
+            libmagic1 file shared-mime-info \
+            ffmpeg ghostscript
 
       - name: Setup redis
         uses: supercharge/redis-github-action@1.4.0
@@ -210,6 +227,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install system packages (image & misc)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            imagemagick libmagickwand-dev libvips libvips-dev \
+            libmagic1 file shared-mime-info \
+            ffmpeg ghostscript
+
       - name: Setup redis
         uses: supercharge/redis-github-action@1.4.0
         with:
@@ -289,6 +314,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install system packages (image & misc)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            imagemagick libmagickwand-dev libvips libvips-dev \
+            libmagic1 file shared-mime-info \
+            ffmpeg ghostscript
+
       - name: Setup redis
         uses: supercharge/redis-github-action@1.4.0
         with:
@@ -356,6 +389,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install system packages (image & misc)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            imagemagick libmagickwand-dev libvips libvips-dev \
+            libmagic1 file shared-mime-info \
+            ffmpeg ghostscript
+
       # Rails is required for the Karma rake script
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -385,6 +426,14 @@ jobs:
       - test_the_rest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Install system packages (image & misc)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            imagemagick libmagickwand-dev libvips libvips-dev \
+            libmagic1 file shared-mime-info \
+            ffmpeg ghostscript
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1

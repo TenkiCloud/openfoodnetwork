@@ -18,7 +18,7 @@ permissions:
 
 jobs:
   controllers_and_models:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     services:
       postgres:
         image: postgres:10
@@ -96,7 +96,7 @@ jobs:
           include-hidden-files: true
 
   system:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     services:
       postgres:
         image: postgres:10
@@ -183,7 +183,7 @@ jobs:
           if-no-files-found: ignore
 
   engines:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     services:
       postgres:
         image: postgres:10
@@ -262,7 +262,7 @@ jobs:
           include-hidden-files: true
 
   test_the_rest:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     services:
       postgres:
         image: postgres:10
@@ -339,7 +339,7 @@ jobs:
           include-hidden-files: true
 
   non_knapsack_jest_karma:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     services:
       postgres:
         image: postgres:10
@@ -377,7 +377,7 @@ jobs:
         run: yarn jest
 
   collate_simplecov_results:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs:
       - controllers_and_models
       - engines
